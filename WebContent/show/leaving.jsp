@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" />
 <title>无标题文档</title>
 <script language="javascript">
@@ -251,7 +251,9 @@ if(document.form1.lzgoto.value =='')  { alert("离职去向不能为空");
 <body>
 
   <%String empno=request.getParameter("empno");
-    String jobid=request.getParameter("jobid");
+    Skemp skemp=(Skemp)request.getAttribute("skemp");
+  	String empname = skemp.getName();
+    int jobid= skemp.getJobid();
 %>
 
 
@@ -260,6 +262,13 @@ if(document.form1.lzgoto.value =='')  { alert("离职去向不能为空");
   <table width="901" height="190" border="1" bordercolor="#FFFFFF">
     <tr>
       <th colspan="3" scope="col"><strong>填写离职信息</strong></th>
+    </tr>
+    <tr>
+      <td width="117">姓名：</td>
+      <td width="183" bgcolor="#FFFFFF"><label>
+      <input name="empname" type="text" id="starttime222" value=<%=empname %> />
+      </label></td>
+      <td width="579" bgcolor="#FFFFFF">&nbsp;</td>
     </tr>
     <tr>
       <td width="117">离职日期：</td>

@@ -1,5 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
      <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -269,8 +269,7 @@ function yanzheng(){
 
 <body>
 <div id="man_zone">
-
-<form  method="post" name="form1" onsubmit="return yanzheng();"action="<%=basePath %>LeaveInfoServlet">
+<form  method="post" name="form1" onsubmit="return yanzheng();"action="<%=basePath %>LeaveServlet?flag=leaved">
     <div class="MainDiv">
       <table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
         <tr>
@@ -285,7 +284,7 @@ function yanzheng(){
                 <td align="center"><br/>
                   <table width="45%" border="0" align="center">
                     <tr>
-                      <td colspan="4"><div align="left"><span class="STYLE3">请输入查询条件：（至少填写一项）</span></div></td>
+                      <td colspan="4"><div align="left"><span class="STYLE3">请输入查询条件：</span></div></td>
                     </tr>
                     <tr>
                       <td width="15%">
@@ -295,7 +294,8 @@ function yanzheng(){
                         <input name="ygnum" type="text" size="15" />
                       </div></td>
                     </tr>
-                    <tr>
+                    
+                    <!-- <tr>
                       <td><div align="left"><span class="STYLE3">员工姓名：</span></div></td>
                       <td colspan="3"><div align="left">
                         <input name="ygname" type="text" size="15" />
@@ -328,7 +328,7 @@ function yanzheng(){
                           <option value="试用期未通过">试用期未通过</option>
                         </select>
                       </div></td>
-                    </tr>
+                    </tr> -->
                   
                     
                     

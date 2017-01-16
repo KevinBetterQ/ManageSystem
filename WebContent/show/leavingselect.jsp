@@ -52,24 +52,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div id="man_zone">
-<form  method="post" name="form1" onsubmit="return yanzheng();"action="<%=basePath %>LeaveServlet">    
+<form  method="post" name="form1" onsubmit="return yanzheng();"action="<%=basePath %>LeaveServlet?flag=select">    
 <div class="MainDiv">
       <table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
         <tr>
-          <th class="tablestyle_title" ><div align="left">离职员工查询</div></th>
+          <th class="tablestyle_title" ><div align="left">员工查询</div></th>
         </tr>
         <tr>
           <td class="CPanel"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
               <tr class="CTitle" >
-                <td height="22" align="center" style="font-size:16px"><div align="center">离职员工查询</div></td>
+                <td height="22" align="center" style="font-size:16px"><div align="center">员工查询</div></td>
               </tr>
               <tr bgcolor="#EEEEEE">
                 <td align="center"><br/>
                   <table width="30%" border="0" align="center">
                     <tr>
-                      <td colspan="2"><div align="left"><span class="STYLE3">请输入查询条件：（至少填写一项）</span></div></td>
+                      <td colspan="2"><div align="left"><span class="STYLE3">请输入查询条件：</span></div></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td width="29%">
                       <div align="left"><span class="STYLE3">部门编号：</span></div>
                     </td>
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td><div align="left">
                         <input name="bmname" type="text" size="15" />
                       </div></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                       <td><div align="left"><span class="STYLE3">员工编号：</span></div></td>
                       <td><div align="left">
@@ -90,14 +90,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </div>                        <div align="left"></div>                      <div align="left"></div></td>
                     </tr>
                     
-                    <tr>
+                   <!--  <tr>
                       <td height="28"><div align="left"><span class="STYLE3">员工姓名：</span></div></td>
                       <td><div align="left">
                           <input name="ygname" type="text" size="15" />
                         </div>
                           <div align="left"></div>
                         <div align="left"></div></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                       <td height="38"><div align="left"></div></td>
                       <td><div align="left">

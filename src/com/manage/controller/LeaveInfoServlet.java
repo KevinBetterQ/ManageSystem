@@ -49,6 +49,7 @@ public class LeaveInfoServlet extends HttpServlet {
 		//处理请求
 		int empno = Integer.parseInt(request.getParameter("empno"));
 		int jobid = Integer.parseInt(request.getParameter("jobid"));
+		String empname = request.getParameter("empname");
 		String place = request.getParameter("lzgoto");
 		Date time = Date.valueOf(request.getParameter("lztime"));
 		String reason = request.getParameter("lztype");
@@ -60,6 +61,9 @@ public class LeaveInfoServlet extends HttpServlet {
 		leave.setPlace(place);
 		leave.setReason(reason);
 		leave.setTime(time);
+		leave.setEmpname(empname);
+		
+		System.out.println(empname);
 		
 		LeaveDao leaveDao = new LeaveDaoImpl();
 		leaveDao.insertLeave(leave);
@@ -70,13 +74,6 @@ public class LeaveInfoServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("show/ture.html").forward(request, response);
 		
-		
-		/*//调用相应的业务逻辑
-		LeaveDao leaveDao = new LeaveDaoImpl();
-		Leave leave = leaveDao.getLeavesById(empno);
-		request.setAttribute("leave", leave);
-		//找到某个视图响应回去
-		request.getRequestDispatcher("staff/leavingInformation.jsp").forward(request, response);*/
 	}
 
 }

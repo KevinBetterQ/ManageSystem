@@ -23,7 +23,7 @@ public class LeaveDaoImpl implements LeaveDao{
 		conn = DbUtils.getConnection();
 		//操作数据库
 		
-		String sql = "INSERT  INTO leave(empno,jobid,place,time,reason) VALUES(?,?,?,?,?)";
+		String sql = "INSERT  INTO leave(empno,jobid,place,time,reason,empname) VALUES(?,?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class LeaveDaoImpl implements LeaveDao{
 			pstmt.setString(3,leave.getPlace() );
 			pstmt.setDate(4, leave.getTime());
 			pstmt.setString(5, leave.getReason());
+			pstmt.setString(6, leave.getEmpname());
 		
 			pstmt.executeUpdate();
 			
@@ -107,7 +108,10 @@ public class LeaveDaoImpl implements LeaveDao{
 				leave.setEmpno(rs.getInt("empno"));
 				leave.setJobid(rs.getInt("jobid"));
 				leave.setTime(rs.getDate("time"));
-				
+				leave.setEmpname(rs.getString("empname"));
+				leave.setPlace(rs.getString("place"));
+				leave.setReason(rs.getString("reason"));
+				leave.setTime(rs.getDate("time"));
 			}
 			
 		} catch (SQLException e) {

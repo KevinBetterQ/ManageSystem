@@ -11,11 +11,7 @@ outlookbar.additem('岗位查询',t,'jobselec.html')
 
 t=outlookbar.addtitle('入职管理','人员管理',1)
 outlookbar.additem('输入员工',t,'entry.jsp')
-outlookbar.additem('查询人才库',t,'newempinsert.html')
-
-
-
-
+/*outlookbar.additem('查询人才库',t,'newempinsert.html')*/
 
 /*t=outlookbar.addtitle('试用期管理','人员管理',1)
 outlookbar.additem('试用期审查',t,'showselect.html')

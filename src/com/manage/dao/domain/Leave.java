@@ -8,7 +8,14 @@ public class Leave {
 	Date time;//离职时间
 	String place;
 	String reason;
+	String empname;
 	
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
 	public String getPlace() {
 		return place;
 	}

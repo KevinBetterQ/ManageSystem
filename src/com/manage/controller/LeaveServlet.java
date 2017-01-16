@@ -41,25 +41,34 @@ public class LeaveServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");     //解决响应时乱码
 
-		//处理请求
-		int empno = Integer.parseInt(request.getParameter("ygnum"));
-		
-		SkempDao skempDao = new SkempDaoImpl();
-		Skemp skemp = skempDao.getSkempById(empno);
-		
-		request.setAttribute("skemp", skemp);
-		request.getRequestDispatcher("show/leavingInformation.jsp").forward(request, response);
-		
-		/*//调用相应的业务逻辑
-		LeaveDao leaveDao = new LeaveDaoImpl();
-		Leave leave = leaveDao.getLeavesById(empno);
-		request.setAttribute("leave", leave);
-		//找到某个视图响应回去
-		request.getRequestDispatcher("staff/leavingInformation.jsp").forward(request, response);*/
+		String string = request.getParameter("flag");
+		if("select".equals(string)){
+			//处理请求
+			int empno = Integer.parseInt(request.getParameter("ygnum"));
+			
+			SkempDao skempDao = new SkempDaoImpl();
+			Skemp skemp = skempDao.getSkempById(empno);
+			if(skemp != null)
+			request.setAttribute("skemp", skemp);
+			request.getRequestDispatcher("show/leavingInformation.jsp").forward(request, response);
+		}else if("leave".equals(string)){
+			int empno = Integer.parseInt(request.getParameter("empno"));
+			SkempDao skempDao = new SkempDaoImpl();
+			Skemp skemp = skempDao.getSkempById(empno);
+			request.setAttribute("skemp", skemp);
+			request.getRequestDispatcher("show/leaving.jsp").forward(request, response);
+		}else if("leaved".equals(string)){
+			int empno = Integer.parseInt(request.getParameter("ygnum"));
+			LeaveDao leaveDao = new LeaveDaoImpl();
+			Leave leave = leaveDao.getLeavesById(empno);
+			request.setAttribute("leave", leave);
+			request.getRequestDispatcher("show/leaved.jsp").forward(request, response);
+		}
 	}
 
 }

@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </tr>
   
   <%Skemp skemp=(Skemp)request.getAttribute("skemp");
-if(skemp==null)
+if(skemp.getName() == null)
 {
 %>
 <tr><td colspan="6">没有符合条件的数据</td></tr>
@@ -51,7 +51,7 @@ if(skemp==null)
 <td width="124"><div align="center"><%=skemp.getDpname() %></div></td>
 <td width="138"><div align="center"><%=skemp.getDpid() %></div></td>
 <td width="179"><div align="center"><%=skemp.getIdcard() %></div></td>
- <td><div align="center"><a href="<%=basePath %>show/leaving.jsp?empno=<%=skemp.getId() %>&jobid=<%=skemp.getJobid() %>">离职</a></div></td>
+ <td><div align="center"><a href="<%=basePath %>LeaveServlet?flag=leave&empno=<%=skemp.getId() %>&jobid=<%=skemp.getJobid() %> %>">离职</a></div></td>
 <tr>
 
 <%} %>
