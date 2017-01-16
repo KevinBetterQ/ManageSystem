@@ -1,6 +1,7 @@
 package com.manage.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.manage.dao.SkempDao;
-import com.manage.dao.domain.Leave;
 import com.manage.dao.domain.Skemp;
 import com.manage.utils.DbUtils;
 
@@ -78,6 +78,25 @@ public class SkempDaoImpl implements SkempDao{
 	@Override
 	public void deleteSkemp(Skemp skemp) {
 		// TODO Auto-generated method stub
+				Connection conn=null;
+				PreparedStatement pstmt=null;
+				
+				try {
+					conn=DbUtils.getConnection();
+					String sql="delete from skemp where id=?";
+					pstmt=conn.prepareStatement(sql);
+					pstmt.setInt(1, skemp.getId());
+					
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally
+				{
+					//4.关闭数据库		
+					DbUtils.closePreparedStatement(pstmt);
+					DbUtils.closeConnection(conn);
+				}
 		
 	}
 
@@ -136,6 +155,27 @@ public class SkempDaoImpl implements SkempDao{
 				skemp.setId(rs.getInt("id"));
 				skemp.setName(rs.getString("name"));
 				skemp.setSex(rs.getString("sex"));
+				skemp.setBir(rs.getDate("bir"));
+				skemp.setIdcard(rs.getString("idcard"));
+				//skemp.setToworktime(toworktime);
+				skemp.setZzmm(rs.getString("zzmm"));
+				skemp.setNational(rs.getString("national"));
+				skemp.setNative_m(rs.getString("native"));
+				skemp.setTele(rs.getString("tele"));
+				skemp.setMail(rs.getString("mail"));
+				skemp.setHeight(rs.getString("height"));
+				skemp.setBloodtype(rs.getString("bloodtype"));
+				skemp.setBirthplace(rs.getString("birthplace"));
+				skemp.setHkplace(rs.getString("hkplace"));
+				skemp.setXl(rs.getString("xl"));
+				skemp.setDegree(rs.getString("degree"));
+				skemp.setGraduateschool(rs.getString("graduateschool"));
+				skemp.setGraduatetime(rs.getDate("graduatetime"));
+				skemp.setProfessional(rs.getString("professional"));
+				skemp.setDpid(rs.getInt("dpid"));
+				skemp.setDpname(rs.getString("dpname"));
+				skemp.setJobid(rs.getInt("jobid"));
+				skemp.setJobname(rs.getString("jobname"));
 				
 			}
 			

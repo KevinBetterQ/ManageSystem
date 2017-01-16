@@ -1,6 +1,8 @@
 package com.manage.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +47,28 @@ public class LeaveInfoServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");     //解决响应时乱码
 
 		//处理请求
-		int id = Integer.parseInt(request.getParameter("ygnum"));
+		int empno = Integer.parseInt(request.getParameter("empno"));
+		int jobid = Integer.parseInt(request.getParameter("jobid"));
+		String place = request.getParameter("lzgoto");
+		Date time = Date.valueOf(request.getParameter("lztime"));
+		String reason = request.getParameter("lztype");
+		
+		Leave leave = new Leave();
+		
+		leave.setEmpno(empno);
+		leave.setJobid(jobid);
+		leave.setPlace(place);
+		leave.setReason(reason);
+		leave.setTime(time);
+		
+		LeaveDao leaveDao = new LeaveDaoImpl();
+		leaveDao.insertLeave(leave);
 		
 		SkempDao skempDao = new SkempDaoImpl();
-		Skemp skemp = skempDao.getSkempById(id);
-		request.setAttribute("skemp", skemp);
+		skempDao.deleteSkemp(skempDao.getSkempById(empno));
 		
-		request.getRequestDispatcher("staff/information2.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("show/ture.html").forward(request, response);
 		
 		
 		/*//调用相应的业务逻辑

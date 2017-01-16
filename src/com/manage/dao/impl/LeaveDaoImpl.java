@@ -18,7 +18,29 @@ public class LeaveDaoImpl implements LeaveDao{
 
 	@Override
 	public void insertLeave(Leave leave) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		conn = DbUtils.getConnection();
+		//操作数据库
+		
+		String sql = "INSERT  INTO leave(empno,jobid,place,time,reason) VALUES(?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, leave.getEmpno());
+			pstmt.setInt(2, leave.getJobid());
+			pstmt.setString(3,leave.getPlace() );
+			pstmt.setDate(4, leave.getTime());
+			pstmt.setString(5, leave.getReason());
+		
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.closeConnection(conn);
+			DbUtils.closePreparedStatement(pstmt);
+		}
 		
 	}
 
@@ -49,7 +71,7 @@ public class LeaveDaoImpl implements LeaveDao{
 			while(rs.next()){
 				Leave leave = new Leave();
 				leave.setEmpno(rs.getInt("empno"));
-				leave.setJobid(rs.getString("jobid"));
+				leave.setJobid(rs.getInt("jobid"));
 				leave.setTime(rs.getDate("time"));
 				leaves.add(leave);
 				
@@ -83,7 +105,7 @@ public class LeaveDaoImpl implements LeaveDao{
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				leave.setEmpno(rs.getInt("empno"));
-				leave.setJobid(rs.getString("jobid"));
+				leave.setJobid(rs.getInt("jobid"));
 				leave.setTime(rs.getDate("time"));
 				
 			}

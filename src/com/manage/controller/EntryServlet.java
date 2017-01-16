@@ -129,7 +129,7 @@ public class EntryServlet extends HttpServlet {
 		
 		
 		//找到某个视图响应回去
-		request.getRequestDispatcher("staff/sec.html").forward(request, response);
+		request.getRequestDispatcher("show/sec.html").forward(request, response);
 		
 		
 	}
