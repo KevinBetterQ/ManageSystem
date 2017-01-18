@@ -10,8 +10,9 @@ public class Department {
 	private String fax;//传真
 	private String discrip;//描述
 	private String createtime;//成立日期
-	
-	private String explanation1;
+	private int jobid;
+	private int dpid;
+	private String jobname;
 	private String explanation2;
 	private String explanation3;
 	public int getId() {
@@ -57,11 +58,17 @@ public class Department {
 	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
-	public String getExplanation1() {
-		return explanation1;
+	public int getJobid() {
+		return jobid;
 	}
-	public void setExplanation1(String explanation1) {
-		this.explanation1 = explanation1;
+	public void setJobid(int jobid) {
+		this.jobid = jobid;
+	}
+	public String getJobname() {
+		return jobname;
+	}
+	public void setJobname(String jobname) {
+		this.jobname = jobname;
 	}
 	public String getExplanation2() {
 		return explanation2;
@@ -75,6 +82,11 @@ public class Department {
 	public void setExplanation3(String explanation3) {
 		this.explanation3 = explanation3;
 	}
-	
+	public int getDpid() {
+		return dpid;
+	}
+	public void setDpid(int dpid) {
+		this.dpid = dpid;
+	}
 	
 }

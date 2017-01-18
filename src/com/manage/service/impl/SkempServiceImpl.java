@@ -30,9 +30,9 @@ public class SkempServiceImpl implements SkempService{
 	}
 
 	@Override
-	public List<Skemp> getSkemps() {
+	public List<Skemp> getSkemps(int id) {
 		SkempDao skempDao = new SkempDaoImpl();
-		return skempDao.getSkemps();
+		return skempDao.getSkemps(id);
 	}
 
 	@Override

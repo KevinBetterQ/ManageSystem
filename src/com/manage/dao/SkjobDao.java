@@ -11,5 +11,6 @@ public interface SkjobDao {
 	void updateSkjob(Skjob skjob);
 	void deleteSkjob(int id);
 	List<Skjob> getSkjobs();
+	List<Skjob> getSkjobstaff(int id);
 	Skjob getSkjobById(int id);
 }

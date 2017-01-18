@@ -8,6 +8,6 @@ public interface SkempService {
 	void insertSkemp(Skemp skemp);
 	void updateSkemp(Skemp skemp);
 	void deleteSkemp(Skemp skemp);
-	List<Skemp> getSkemps();
+	List<Skemp> getSkemps(int id);
 	Skemp getSkempById(int id);
 }

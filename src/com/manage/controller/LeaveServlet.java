@@ -1,6 +1,8 @@
 package com.manage.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,8 @@ import com.manage.dao.domain.Leave;
 import com.manage.dao.domain.Skemp;
 import com.manage.dao.impl.LeaveDaoImpl;
 import com.manage.dao.impl.SkempDaoImpl;
+import com.manage.service.SelectNewSkempService;
+import com.manage.service.impl.SelectNewSkempServiceImpl;
 
 
 /**
@@ -68,6 +72,17 @@ public class LeaveServlet extends HttpServlet {
 			Leave leave = leaveDao.getLeavesById(empno);
 			request.setAttribute("leave", leave);
 			request.getRequestDispatcher("show/leaved.jsp").forward(request, response);
+		}else if("leaveselect".equals(string)){
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			String time1=request.getParameter("time1");
+			String time2=request.getParameter("time2");
+			System.out.println(time1+"\t"+time2);
+			LeaveDao leaveDao = new LeaveDaoImpl();
+			List<Leave> leaves = leaveDao.getLeavesByTime(time1, time2);
+				
+			request.setAttribute("leaves", leaves);
+			request.getRequestDispatcher("show/leavelist.jsp").forward(request, response);
 		}
 	}
 

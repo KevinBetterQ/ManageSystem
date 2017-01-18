@@ -7,10 +7,13 @@ public class Skjob {
 	private String type;//岗位类型
 	private int limit;//岗位编制
 	private int deptno;//隶属部门
+	private int jobid;//岗位下查询员工时代表岗位编号，
+	private String jbname;//岗位下查询员工时代表岗位名称，而name变为员工名称
 	
 	private String explanation1;
 	private String explanation2;
 	private String explanation3;
+	
 	public int getId() {
 		return id;
 	}
@@ -58,6 +61,18 @@ public class Skjob {
 	}
 	public void setExplanation3(String explanation3) {
 		this.explanation3 = explanation3;
+	}
+	public int getJobid() {
+		return jobid;
+	}
+	public void setJobid(int jobid) {
+		this.jobid = jobid;
+	}
+	public String getJbname() {
+		return jbname;
+	}
+	public void setJbname(String jbname) {
+		this.jbname = jbname;
 	}
 	
 	

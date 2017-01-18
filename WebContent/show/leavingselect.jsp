@@ -23,23 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language='javascript'>                                                                                           
 	function yanzheng(){                                                                                                  
 	
-	 for(var i=0;i< form1.bmnum.value.length;i++){
-			var ch = form1.bmnum.value.charAt(i);
-			if(ch < "0" || ch > "9" ){
-				alert("部门编号为数字");
-				return false;
-			}
-		}                                                                                    
-	                                                                                         
-	  
-	 for(var i=0;i< form1.ygnum.value.length;i++){
-			var ch = form1.ygnum.value.charAt(i);
-			if(ch < "0" || ch > "9"){
-				alert("员工编号为数字");
-				return false;
-			}
-		} 
-	 if(document.form1.bmnum.value ==''&&document.form1.bmname.value ==''&&document.form1.ygnum.value ==''&&document.form1.ygname.value=='' )           { alert("查询条件不能都为空");   
+	                                                                                   
+	                                                                     
+	 if(document.form1.ygnum.value =='' )           
+	 { alert("查询条件不能都为空");   
 	        return false;} 
 			return true;                                                                   
 	                                                                                         
@@ -69,35 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <tr>
                       <td colspan="2"><div align="left"><span class="STYLE3">请输入查询条件：</span></div></td>
                     </tr>
-                    <!-- <tr>
-                      <td width="29%">
-                      <div align="left"><span class="STYLE3">部门编号：</span></div>
-                    </td>
-                      <td width="71%"><div align="left">
-                        <input name="bmnum" type="text" size="15" />
-                      </div></td>
-                    </tr>
-                    <tr>
-                      <td><div align="left"><span class="STYLE3">部门名称：</span></div></td>
-                      <td><div align="left">
-                        <input name="bmname" type="text" size="15" />
-                      </div></td>
-                    </tr> -->
-                    <tr>
+                     <tr>
                       <td><div align="left"><span class="STYLE3">员工编号：</span></div></td>
                       <td><div align="left">
                         <input name="ygnum" type="text" size="15" />
                       </div>                        <div align="left"></div>                      <div align="left"></div></td>
                     </tr>
-                    
-                   <!--  <tr>
-                      <td height="28"><div align="left"><span class="STYLE3">员工姓名：</span></div></td>
-                      <td><div align="left">
-                          <input name="ygname" type="text" size="15" />
-                        </div>
-                          <div align="left"></div>
-                        <div align="left"></div></td>
-                    </tr> -->
                     <tr>
                       <td height="38"><div align="left"></div></td>
                       <td><div align="left">

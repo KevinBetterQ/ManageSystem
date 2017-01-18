@@ -1,6 +1,7 @@
 package com.manage.dao;
 
 import java.util.List;
+
 import com.manage.dao.domain.Department;
 
 public interface DepartmentDao {
@@ -9,7 +10,7 @@ public interface DepartmentDao {
 	void updateDepartment(Department depart);
 	void deleteDepartment(int id);
 	List<Department> getDepartments();
-	List<Department> getDepartments(String name);
+	List<Department> getDepartmentstaff(int id);
 	Department getDepartmentById(int id);
 
 }

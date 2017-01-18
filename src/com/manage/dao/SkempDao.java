@@ -8,6 +8,8 @@ public interface SkempDao {
 	void insertSkemp(Skemp skemp);
 	void updateSkemp(Skemp skemp);
 	void deleteSkemp(Skemp skemp);
-	List<Skemp> getSkemps();
+	List<Skemp> getSkemps(int id);
 	Skemp getSkempById(int id);
+	List<Skemp> getSkempNewStaff(String time1,String time2,String name);
+	void updateSkChange(Skemp skempChange);
 }

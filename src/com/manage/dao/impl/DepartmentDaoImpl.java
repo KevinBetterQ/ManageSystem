@@ -20,47 +20,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	@Override
 	public List<Department> selectDepartment() {
 		// TODO Auto-generated method stub
-
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Department>  depts=new ArrayList<Department>();
-		try {
-			conn=DbUtils.getConnection();
-			//3.操作数据库			
-			String sql="select department.id,department.name,societyrelation.name,societyrelation.empno from department.name=societyrelation.job";			
-			pstmt=conn.prepareStatement(sql);
-			
-			rs=pstmt.executeQuery();
-			
-			while(rs.next())
-			{
-				Department depart=new Department();
-				depart.setId(rs.getInt("department.id"));//(rs.getInt("EMPNO"));//
-				depart.setName(rs.getString("department.name"));//(rs.getString("ENAME"));
-				depart.setType(rs.getString("societyrelation.job"));//(rs.getString("JOB"));员工姓名
-				depart.setTele(rs.getInt("societyrelation.empno"));//员工编号
-				//depart.setFax(rs.getString("fax"));//职务
-				//depart.setDiscrip(rs.getString("discrip"));//联系电话
-				//depart.setCreatetime(rs.getString("createtime"));//岗位编号
-				//System.out.println("ffff:"+depart.getId());//岗位名称
-				//入职时间
-				//人数总计
-				depts.add(depart);
-				
-			}
-			
-		}catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally
-		{
-	    DbUtils.closeResultSet(rs);
-	    DbUtils.closePreparedStatement(pstmt);
-	    DbUtils.closeConnection(conn);
-		
-		}
-		return depts;
+		return null;
 	}
 	
 	@Override
@@ -240,7 +200,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public List<Department> getDepartments(String name) {
+	public List<Department> getDepartmentstaff(int id) {
 		// TODO Auto-generated method stub
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -249,22 +209,25 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		try {
 			conn=DbUtils.getConnection();
 			//3.操作数据库			
-			String sql="select department.id,department.name,societyrelation.name,societyrelation.empno from department societyrelation where name=societyrelation.job";			
+			//String sql="select sk.id,sk.name,so.id,so.name from skdept sk，skemp so where so.dpid='id'";			
+			String sql="select id,name,dpid,dpname,tele,jobid,jobname from skemp where dpid=?";
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			
 			rs=pstmt.executeQuery();
 			
 			while(rs.next())
 			{
 				Department depart=new Department();
-				depart.setId(rs.getInt("department.id"));//(rs.getInt("EMPNO"));//
-				depart.setName(rs.getString("department.name"));//(rs.getString("ENAME"));
-				depart.setType(rs.getString("societyrelation.job"));//(rs.getString("JOB"));员工姓名
-				depart.setTele(rs.getInt("societyrelation.empno"));//员工编号
+				depart.setId(rs.getInt("id"));//(rs.getInt("EMPNO"));//员工编号
+				depart.setName(rs.getString("name"));//(rs.getString("ENAME"));员工姓名
+				depart.setId(rs.getInt("dpid"));//(rs.getString("JOB"));部门编号
+				depart.setType(rs.getString("dpname"));//部门姓名
 				//depart.setFax(rs.getString("fax"));//职务
-				//depart.setDiscrip(rs.getString("discrip"));//联系电话
-				//depart.setCreatetime(rs.getString("createtime"));//岗位编号
-				//System.out.println("ffff:"+depart.getId());//岗位名称
+				//System.out.println(rs.getString("tele"));
+				//depart.setTele(Integer.valueOf(rs.getString("tele")));//depart.setDiscrip(rs.getString("discrip"));//联系电话
+				depart.setJobid(rs.getInt("jobid"));//depart.setCreatetime(rs.getString("createtime"));//岗位编号
+				depart.setJobname(rs.getString("jobname"));//System.out.println("ffff:"+depart.getId());//岗位名称
 				//入职时间
 				//人数总计
 				depts.add(depart);

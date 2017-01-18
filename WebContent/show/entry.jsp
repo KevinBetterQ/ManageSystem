@@ -468,26 +468,9 @@ function link(){
                     <option value="其他">其他</option>
                 </select></td>
               </tr>
-              <tr>
-                <td>试用期安排</td>
-                <td class="newfont03">是否安排试用期</td>
-                <td class="newfont03"><label>
-                  <select name="select15">
-                    <option value="是">是 </option>
-                    <option value="否">否</option>
-                  </select>
-                </label></td>
-                <td class="newfont03">开始时间<span class="STYLE4">*</span></td>
-                <td class="newfont03"><input name="st" type="text" size="12" onclick="setday(this)" /></td>
-                <td class="newfont03">结束时间<span class="STYLE4">*</span></td>
-                <td colspan="3"><input name="et" type="text" size="12" onclick="setday(this)" /></td>
-                <td colspan="2"><span class="newfont03"><span class="STYLE7">备注</span></span></td>
-                <td colspan="2"><input name="et22" type="text" size="18"  /></td>
-              </tr>
               
             </table>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+            
           </td>
         </tr>
       </table>

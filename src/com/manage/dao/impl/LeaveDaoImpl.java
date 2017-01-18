@@ -126,4 +126,46 @@ public class LeaveDaoImpl implements LeaveDao{
 		return leave;
 	}
 
+	@Override
+	public List<Leave> getLeavesByTime(String time1, String time2) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		ResultSet rs=null;
+		List<Leave> leaves = new ArrayList<Leave>();
+		
+		try {
+			conn = DbUtils.getConnection();
+			
+				String sql = "select * from leave where time between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd')";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, time1);
+				pstmt.setString(2, time2);
+				rs = pstmt.executeQuery();
+			
+			
+			while(rs.next()){
+				Leave leave = new Leave();
+				leave.setEmpno(rs.getInt("empno"));
+				leave.setEmpname(rs.getString("empname"));
+				leave.setJobid(rs.getInt("jobid"));
+				leave.setPlace(rs.getString("place"));
+				leave.setTime(rs.getDate("time"));
+				leave.setReason(rs.getString("reason"));
+				leaves.add(leave);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DbUtils.closePreparedStatement(pstmt);
+			DbUtils.closeResultSet(rs);
+		}
+
+		return leaves;
+	}
+
 }
